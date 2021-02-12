@@ -1,0 +1,9 @@
+unittest:
+  platforms:
+    - uno
+  libraries:
+
+compile:
+  platforms:
+    - uno
+  libraries:

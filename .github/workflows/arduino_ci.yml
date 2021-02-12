@@ -1,0 +1,15 @@
+---
+name: Arduino CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Arduino_CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Arduino CI
+        uses: Arduino-CI/action@stable-1.x

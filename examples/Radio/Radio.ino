@@ -1,6 +1,6 @@
 
 #include <EEPROM.h>
-#include <Radio.h>
+#include <ArduinoRadio.h>
 
 #define NUMBER_OF_MENUITEMS 3
 
@@ -23,23 +23,16 @@ MenuItem menuItems[NUMBER_OF_MENUITEMS] = {
 };
 
 
-void updateMenuVariables(MenuItem m){
-  if(m.strVariable != NULL) m.*strVariable = m.value.trim();
-  if(m.intVariable != NULL) m.*intVariable = m.value.trim().toInt();
-}
-
-
-
 void setup() {
   // put your setup code here, to run once:
 
- 
+
   Serial.begin(9600);
   while(!Serial){}
   Serial.println("Starting");
 
   menuItems[1].value = "test";
-  
+
  // for(int i = 0; i < 36; i++){
  //   EEPROM.write(i, alphanumeric[i]);
  // }
@@ -71,7 +64,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  
+
   for(MenuItem m : menuItems){
     Serial.println("Item:  " + m.label + "       value: "+m.value);
     if(m.strVariable != NULL) Serial.println("HAS String variable");
@@ -87,7 +80,7 @@ void loop() {
 
 
 
-String readEEPROM(char address, char len){
+String readEEPROM(int address, int len){
   char data[100];  //max length
   char checksum;
   char calcChecksum = 0;
